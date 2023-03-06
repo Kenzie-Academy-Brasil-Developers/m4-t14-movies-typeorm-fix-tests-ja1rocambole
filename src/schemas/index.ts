@@ -1,3 +1,13 @@
-import { movieCreateSchema, requestMovieSchema } from "./movie.schema";
+import {
+  movieCreateSchema,
+  requestMovieSchema,
+  multipleMovieCreateSchema,
+  movieUpdateSchema,
+} from "./movie.schema";
 
-export { movieCreateSchema, requestMovieSchema };
+export {
+  movieCreateSchema,
+  requestMovieSchema,
+  multipleMovieCreateSchema,
+  movieUpdateSchema,
+};

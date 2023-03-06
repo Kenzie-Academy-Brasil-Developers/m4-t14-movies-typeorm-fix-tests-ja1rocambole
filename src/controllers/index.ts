@@ -1,3 +1,13 @@
-import { createMovieController } from "./movie.controller";
+import {
+  createMovieController,
+  deleteMoviesController,
+  readMoviesController,
+  updateMoviesController,
+} from "./movie.controller";
 
-export { createMovieController };
+export {
+  createMovieController,
+  deleteMoviesController,
+  readMoviesController,
+  updateMoviesController,
+};

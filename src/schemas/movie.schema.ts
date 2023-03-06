@@ -8,4 +8,6 @@ export const movieCreateSchema = z.object({
   price: z.number().int(),
 });
 
+export const multipleMovieCreateSchema = movieCreateSchema.array();
 export const requestMovieSchema = movieCreateSchema.omit({ id: true });
+export const movieUpdateSchema = requestMovieSchema.partial();

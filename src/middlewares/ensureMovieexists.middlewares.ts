@@ -3,25 +3,22 @@ import { Repository } from "typeorm";
 import { AppDataSource } from "../data-source";
 import { Movie } from "../entities";
 import { AppError } from "../errors";
+import { IMovie } from "../interfaces";
 
-export const validatedMovieNameMiddlewares = async (
+export const ensureMovieexistsMiddlewares = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<void> => {
+) => {
+  const idUrl = req.params.id;
+
   const movieRepository: Repository<Movie> = AppDataSource.getRepository(Movie);
 
-  if (req.body.name) {
-    const movieNameExists = await movieRepository.findOne({
-      where: {
-        name: req.body.name,
-      },
-    });
+  const findMovie: IMovie | null = await movieRepository.findOneBy({
+    id: Number(idUrl),
+  });
 
-    if (movieNameExists) {
-      throw new AppError("Movie already exists.", 409);
-    }
-  }
+  if (!findMovie) throw new AppError("Movie not found", 404);
 
   next();
 };
